@@ -1,33 +1,42 @@
-/*** PARCEL Bundler
- * HDR - Hot Module Replacement
- * Fule Watcher Algorithm - C++
- * BUNDLING
- * MINIFY
- * Dev and Production Build
- * Super Fast build algorithm
- * Image Optimization
- * Caching While Development 
- * Compression
- * Compatible with older version of browsers
- * add --https in from for nxp parcel index.html --https to run it locally as https on dev
- * port number
- * Consistant Hashing Algo
- * Zero Config
- * 
- */
-import React from "react";
+
 import ReactDOM from "react-dom/client";
 
 
-const heading = React.createElement("h1", { "id": "title" }, "Learning React");
+// const Title = (
+//     <h1 id="title" key="h1">
+//         Learning React Course
+//     </h1>
+// )
 
-const heading2 = React.createElement("h2", { "id": "title" }, "Heading 2");
+const Logo = () => (
+    <div>
+        <img src="https://seeklogo.com/images/S/sheraton-hotels-logo-E23D7401AF-seeklogo.com.png" width="100px" />
+    </div>
+)
+const SearchBar = () => (
+    <div>
+        <input type="tex" name="search" id="search" />
+    </div>
+)
 
-const container = React.createElement(
-    "div",
-    { id: "container" },
-    [heading, heading2]
-);
+const UserIcon = () => (
+    <div>
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg" width="100px" />
+    </div>
+)
+//Componenets in react
+//Functional based ocponents:
+//Class based componenets 
+//{Title}
+const HeaderComponent = () => {
+    return (
+        <div>
+            <Logo />
+            <SearchBar />
+            <UserIcon />
+        </div>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(container);
+root.render(<HeaderComponent />);
