@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { restrauntList } from "../constants";
 import RestrauntCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router-dom";
 const Body = () => {
     // When you need to create a local variable in REACT, you need to use the 
     // state variable created useState variable
@@ -12,7 +11,7 @@ const Body = () => {
     //it comes from React libraray, we import it using named variable
     //useState funciton returns an array- first element of  this array is variable name //
     // When state changes - react re-renders whole component
-
+    //useEffect is  a webhook that is called afte the compnent is rendered
     //Avoidn rendering  component
     const [allRestaurants, setAllRestaurants] = useState([])
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -54,7 +53,7 @@ const Body = () => {
 
     if (!allRestaurants) return null; //Early Return (Not Render Component)
 
-    // if(filteredRestaurants.length ==0) return <h1>No restaurant match your search</h1>
+    if (filteredRestaurants.length == 0) return <h1>No restaurant match your search</h1>
     return (allRestaurants.length === 0) ?
         <Shimmer /> :
         (
@@ -76,7 +75,11 @@ const Body = () => {
                     {
                         (filteredRestaurants.length) ?
                             filteredRestaurants.map((restaurant) => {
-                                return <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
+                                return (
+                                    <Link key={restaurant.data.id} to={"restaurant/" + restaurant.data.id}>
+                                        <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
+                                    </Link>
+                                )
                             }) : <h1>No record found</h1>
                     }
                 </div>

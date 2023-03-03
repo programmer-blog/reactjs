@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
-
+import Logo from "../assets/images/logo.png"
 const loggedInUser = () => {
     //Api call to authenticate user
     return true;
@@ -8,7 +9,7 @@ const loggedInUser = () => {
 const Title = () => (
     <a href="/">
         <img className="logo"
-            src="https://www.shutterstock.com/image-vector/logo-templates-monogrammed-elements-flourish-600w-1900512124.jpg" />
+            src={Logo} />
     </a>
 )
 
@@ -20,14 +21,16 @@ const Header = () => {
             <Title />
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <Link to="/"><li>Home</li></Link>
+                    <Link to="/about"><li>About</li></Link>
+                    <Link to="/contact"><li>Contact</li></Link>
                     <li>Cart</li>
                 </ul>
             </div>
-            {isLoggedIn ? <button onClick={() => { setIsLoggedIn(false) }}>Logout</button> :
-                <button onClick={() => { setIsLoggedIn(true) }}>Login</button>}
+            {
+                isLoggedIn ? <button onClick={() => { setIsLoggedIn(false) }}>Logout</button> :
+                    <button onClick={() => { setIsLoggedIn(true) }}>Login</button>
+            }
 
         </div>
     )
