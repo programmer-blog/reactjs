@@ -33967,7 +33967,7 @@ class Profile extends (0, _reactDefault.default).Component {
         };
     }
     async componentDidMount() {
-        const data = await fetch("https://api.github.com/users/programmer-blog");
+        const data = await fetch("...");
         const json = await data.json();
         this.setState({
             userInfo: json
