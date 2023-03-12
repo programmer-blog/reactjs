@@ -10,7 +10,7 @@ class Profile extends React.Component {
     }
 
     async componentDidMount() {
-        const data = await fetch("...");
+        const data = await fetch("");
         const json = await data.json();
         this.setState({
             userInfo: json

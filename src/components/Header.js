@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import Logo from "../assets/images/logo.png"
+import useAuth from "../utils/useAuth";
 const loggedInUser = () => {
     //Api call to authenticate user
     return true;
@@ -14,7 +15,8 @@ const Title = () => (
 )
 
 const Header = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const isLoggedIn = useAuth();
 
     return (
         <div className="header">
@@ -24,6 +26,8 @@ const Header = () => {
                     <Link to="/"><li>Home</li></Link>
                     <Link to="/about"><li>About</li></Link>
                     <Link to="/contact"><li>Contact</li></Link>
+                    <Link to="/instamart"><li>Instamart</li></Link>
+
                     <li>Cart</li>
                 </ul>
             </div>

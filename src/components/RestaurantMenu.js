@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../constants";
+import useRestaurant from "../utils/useRestaurant";
 import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
     const { id } = useParams();
-    const [restaurant, setRestaurant] = useState(null);
 
-    useEffect(() => {
-        getRestaurantInfo()
-    }, []);
-
-    async function getRestaurantInfo() {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/v4/full?menuId=" + id);
-        const json = await data.json();
-        setRestaurant(json.data);
-    }
+    const restaurant = useRestaurant(id);
 
     return (!restaurant) ? <Shimmer /> : (
         <div className="menu">
