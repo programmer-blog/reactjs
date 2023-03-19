@@ -7,7 +7,6 @@ import useRestaurants from "../utils/useRestaurants";
 import useOnline from "../utils/useOnline";
 const Body = () => {
 
-
     // const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
     // let [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -28,20 +27,20 @@ const Body = () => {
         <Shimmer /> :
         (
             <>
-                <div className="search-container">
-                    <input type="text" className="search" placeholder="search" value={searchText}
+                <div className="search-container p-5 bg-pink-50 my-5">
+                    <input type="text" className="focus:bg-green-200" placeholder="search" value={searchText}
                         onChange=
                         {(e) => {
                             setSearchText(e.target.value)
                         }} />
-                    <button className="search-btn" onClick={() => {
+                    <button className="p-2 m-2 bg-green-900 hover:bg-gray-500 text-white rounded-lg" onClick={() => {
                         //filter the data
                         //update the state of restaureant list
                         const data = filterData(searchText, allRestaurants);
                         setFilteredRestaurants(data);
                     }}>Search</button>
                 </div>
-                <div className="restaurant-list">
+                <div className="flex flex-wrap">
                     {
                         (filteredRestaurants.length) ?
                             filteredRestaurants.map((restaurant) => {
